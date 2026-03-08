@@ -12,16 +12,9 @@ public class AddressBookAppMain {
 		
 		AddressBook addressBook = new AddressBook();
 
-        ContactPerson person = addressBook.createContact();
+        addressBook.addContact();
 
-        System.out.println("\nContact Created Successfully!");
-
-        System.out.println(person.firstName + " " + person.lastName);
-        System.out.println(person.address);
-        System.out.println(person.city + ", " + person.state);
-        System.out.println("Zip: " + person.zip);
-        System.out.println("Phone: " + person.phoneNumber);
-        System.out.println("Email: " + person.email);
+        addressBook.displayContacts();
         
 		//SpringApplication.run(AddressBookAppMain.class, args);
 	}
