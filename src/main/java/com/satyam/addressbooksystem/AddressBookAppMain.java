@@ -8,7 +8,8 @@ public class AddressBookAppMain {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
-		//SpringApplication.run(AddressBookAppMain.class, args);
+		System.out.println("-------------------------------");
+		
 	}
 
 }
