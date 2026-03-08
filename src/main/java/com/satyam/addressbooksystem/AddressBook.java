@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AddressBook {
 
-    public void addContact() {
+    public ContactPerson createContact() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -27,7 +27,7 @@ public class AddressBook {
 
         System.out.println("Enter Zip:");
         person.zip = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         System.out.println("Enter Phone Number:");
         person.phoneNumber = scanner.nextLine();
@@ -35,8 +35,6 @@ public class AddressBook {
         System.out.println("Enter Email:");
         person.email = scanner.nextLine();
 
-        System.out.println("\nContact Added Successfully!");
-
-        person.displayContact();
+        return person;
     }
 }
