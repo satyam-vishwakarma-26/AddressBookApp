@@ -1,9 +1,5 @@
 package com.satyam.addressbooksystem;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class AddressBookAppMain {
 
 	public static void main(String[] args) {
@@ -13,10 +9,11 @@ public class AddressBookAppMain {
 		AddressBook addressBook = new AddressBook();
 
         addressBook.addContact();
+        
+        addressBook.editContact();
 
         addressBook.displayContacts();
         
-		//SpringApplication.run(AddressBookAppMain.class, args);
 	}
 
 }
