@@ -1,6 +1,7 @@
 package com.satyam.addressbooksystem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class AddressBook {
@@ -9,6 +10,7 @@ public class AddressBook {
 
     public void addContact(ContactPerson contact) {
         contactList.add(contact);
+        System.out.println("Contact Added Successfully");
     }
 
     public void displayContacts() {
@@ -24,33 +26,31 @@ public class AddressBook {
         }
     }
 
-    public void editContact(String name) {
-
-        Scanner sc = new Scanner(System.in);
+    public void editContact(String name, Scanner sc) {
 
         for(ContactPerson contact : contactList) {
 
-            if(contact.firstName.equals(name)) {
+            if(contact.getFirstName().equalsIgnoreCase(name)) {
 
                 System.out.println("Enter new Address:");
-                contact.address = sc.nextLine();
+                contact.setAddress(sc.nextLine());
 
                 System.out.println("Enter new City:");
-                contact.city = sc.nextLine();
+                contact.setCity(sc.nextLine());
 
                 System.out.println("Enter new State:");
-                contact.state = sc.nextLine();
+                contact.setState(sc.nextLine());
 
                 System.out.println("Enter new Zip:");
-                contact.zip = sc.nextLine();
+                contact.setZip(sc.nextLine());
 
                 System.out.println("Enter new Phone:");
-                contact.phoneNumber = sc.nextLine();
+                contact.setPhoneNumber(sc.nextLine());
 
                 System.out.println("Enter new Email:");
-                contact.email = sc.nextLine();
+                contact.setEmail(sc.nextLine());
 
-                System.out.println("Contact updated successfully");
+                System.out.println("Contact Updated Successfully");
                 return;
             }
         }
@@ -60,11 +60,15 @@ public class AddressBook {
 
     public void deleteContact(String name) {
 
-        for(ContactPerson contact : contactList) {
+        Iterator<ContactPerson> iterator = contactList.iterator();
 
-            if(contact.firstName.equals(name)) {
-                contactList.remove(contact);
-                System.out.println("Contact deleted successfully");
+        while(iterator.hasNext()) {
+
+            ContactPerson contact = iterator.next();
+
+            if(contact.getFirstName().equalsIgnoreCase(name)) {
+                iterator.remove();
+                System.out.println("Contact Deleted Successfully");
                 return;
             }
         }
