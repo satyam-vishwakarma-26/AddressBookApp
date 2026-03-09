@@ -1,0 +1,163 @@
+package com.satyam.addressbooksystem;
+
+import java.util.Scanner;
+
+public class AddressBookSAppMain {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        AddressBookSystem system = new AddressBookSystem();
+
+        while(true) {
+
+            System.out.println("\n1 Add AddressBook");
+            System.out.println("2 Display AddressBooks");
+            System.out.println("3 Use AddressBook");
+            System.out.println("4 Exit");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch(choice) {
+
+                case 1:
+
+                    System.out.println("Enter AddressBook Name:");
+                    String name = sc.nextLine();
+
+                    system.addAddressBook(name);
+                    break;
+
+                case 2:
+
+                    system.displayAddressBooks();
+                    break;
+
+                case 3:
+
+                    System.out.println("Enter AddressBook Name:");
+                    String bookName = sc.nextLine();
+
+                    AddressBook book = system.getAddressBook(bookName);
+
+                    if(book == null) {
+                        System.out.println("AddressBook not found");
+                        break;
+                    }
+
+                    manageContacts(book, sc);
+                    break;
+
+                case 4:
+
+                    System.out.println("Exiting...");
+                    return;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    public static void manageContacts(AddressBook book, Scanner sc) {
+
+        while(true) {
+
+            System.out.println("\n1 Add Contact");
+            System.out.println("2 Display Contacts");
+            System.out.println("3 Edit Contact");
+            System.out.println("4 Delete Contact");
+            System.out.println("5 Search by City");
+            System.out.println("6 Search by State");
+            System.out.println("7 Back");
+
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch(choice) {
+
+                case 1:
+
+                    System.out.println("Enter First Name:");
+                    String first = sc.nextLine();
+
+                    System.out.println("Enter Last Name:");
+                    String last = sc.nextLine();
+
+                    System.out.println("Enter Address:");
+                    String address = sc.nextLine();
+
+                    System.out.println("Enter City:");
+                    String city = sc.nextLine();
+
+                    System.out.println("Enter State:");
+                    String state = sc.nextLine();
+
+                    System.out.println("Enter Zip:");
+                    String zip = sc.nextLine();
+
+                    System.out.println("Enter Phone:");
+                    String phone = sc.nextLine();
+
+                    System.out.println("Enter Email:");
+                    String email = sc.nextLine();
+
+                    ContactPerson contact = new ContactPerson(first,last,address,city,state,zip,phone,email);
+
+                    book.addContact(contact);
+                    break;
+
+                case 2:
+                    book.displayContacts();
+                    break;
+
+                case 3:
+
+                    System.out.println("Enter First Name:");
+                    String editFirst = sc.nextLine();
+
+                    System.out.println("Enter Last Name:");
+                    String editLast = sc.nextLine();
+
+                    book.editContact(editFirst, editLast, sc);
+                    break;
+
+                case 4:
+
+                    System.out.println("Enter First Name:");
+                    String delFirst = sc.nextLine();
+
+                    System.out.println("Enter Last Name:");
+                    String delLast = sc.nextLine();
+
+                    book.deleteContact(delFirst, delLast);
+                    break;
+
+                case 5:
+
+                    System.out.println("Enter City:");
+                    String searchCity = sc.nextLine();
+
+                    book.searchByCity(searchCity);
+                    break;
+
+                case 6:
+
+                    System.out.println("Enter State:");
+                    String searchState = sc.nextLine();
+
+                    book.searchByState(searchState);
+                    break;
+
+                case 7:
+                    return;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
