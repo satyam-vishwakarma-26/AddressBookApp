@@ -144,4 +144,36 @@ class AddressBookAppMainTests {
 
         assertDoesNotThrow(() -> addressBook.sortContactsByName());
     }
+    
+    @Test
+    void givenTwoContactsWithSameName_ShouldBeEqual() {
+
+        ContactPerson person1 = new ContactPerson(
+                "Aman","Sharma","A","Bhopal","MP","111","999","a@gmail.com"
+        );
+
+        ContactPerson person2 = new ContactPerson(
+                "Aman","Sharma","B","Delhi","DL","222","888","b@gmail.com"
+        );
+
+        assertEquals(person1, person2);
+    }
+    @Test
+    void givenContact_WhenCreated_ShouldStoreCorrectInformation() {
+
+        ContactPerson person = new ContactPerson(
+                "Ravi",
+                "Kumar",
+                "Indrapuri",
+                "Bhopal",
+                "MP",
+                "462001",
+                "9876543210",
+                "ravi@gmail.com"
+        );
+
+        assertEquals("Ravi", person.getFirstName());
+        assertEquals("Kumar", person.getLastName());
+        assertEquals("Bhopal", person.getCity());
+    }
 }

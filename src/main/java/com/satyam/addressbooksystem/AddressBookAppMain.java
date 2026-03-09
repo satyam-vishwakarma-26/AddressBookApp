@@ -16,7 +16,7 @@ public class AddressBookAppMain {
             System.out.println("\n1 Add AddressBook");
             System.out.println("2 Display AddressBooks");
             System.out.println("3 Use AddressBook");
-            System.out.println("4 Retrieve Contacts From Database (UC16)");
+            System.out.println("4 Retrieve Contacts From Database ");
             System.out.println("5 Exit");
 
             System.out.print("Enter choice: ");
