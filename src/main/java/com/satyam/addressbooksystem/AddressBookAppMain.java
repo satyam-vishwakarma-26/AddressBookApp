@@ -27,6 +27,7 @@ public class AddressBookAppMain {
 
                     System.out.println("Enter AddressBook Name:");
                     String name = sc.nextLine();
+
                     system.addAddressBook(name);
                     break;
 
@@ -51,6 +52,7 @@ public class AddressBookAppMain {
                     break;
 
                 case 4:
+
                     System.out.println("Exiting...");
                     return;
 
@@ -59,6 +61,7 @@ public class AddressBookAppMain {
             }
         }
     }
+
 
     public static void manageContacts(AddressBook book, Scanner sc) {
 
@@ -69,8 +72,8 @@ public class AddressBookAppMain {
             System.out.println("3 Edit Contact");
             System.out.println("4 Delete Contact");
             System.out.println("5 Sort Contacts by Name");
-            System.out.println("6 Write Contacts to File");
-            System.out.println("7 Read Contacts from File");
+            System.out.println("6 Write Contacts to CSV");
+            System.out.println("7 Read Contacts from CSV");
             System.out.println("8 Back");
 
             System.out.print("Enter choice: ");
@@ -111,9 +114,12 @@ public class AddressBookAppMain {
                     book.addContact(contact);
                     break;
 
+
                 case 2:
+
                     book.displayContacts();
                     break;
+
 
                 case 3:
 
@@ -126,6 +132,7 @@ public class AddressBookAppMain {
                     book.editContact(editFirst, editLast, sc);
                     break;
 
+
                 case 4:
 
                     System.out.println("Enter First Name:");
@@ -137,17 +144,27 @@ public class AddressBookAppMain {
                     book.deleteContact(delFirst, delLast);
                     break;
 
+
                 case 5:
+
                     book.sortContactsByName();
                     break;
 
+
                 case 6:
-                    AddressBookFileIO.writeContactsToFile(book.getContacts(), "contacts.txt");
+
+                    AddressBookCSVService.writeContactsToCSV(
+                            book.getContacts(), "contacts.csv");
+
                     break;
 
+
                 case 7:
-                    AddressBookFileIO.readContactsFromFile("contacts.txt");
+
+                    AddressBookCSVService.readContactsFromCSV("contacts.csv");
+
                     break;
+
 
                 case 8:
                     return;
